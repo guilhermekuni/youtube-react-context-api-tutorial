@@ -8,11 +8,7 @@ const productsMock: ProductType[] = [
   { id: 4, name: "Product 4", price: 50 },
 ];
 
-type ProductListProps = {
-  onAddProduct: (product: ProductType) => void;
-};
-
-export const ProductList = ({ onAddProduct }: ProductListProps) => {
+export const ProductList = () => {
   return (
     <table className="w-96 mt-8">
       <tr>
@@ -21,7 +17,7 @@ export const ProductList = ({ onAddProduct }: ProductListProps) => {
         <th className="py-2 px-4 border-b text-left">Action</th>
       </tr>
       {productsMock.map((item) => (
-        <ProductItem item={item} onAddProduct={onAddProduct} />
+        <ProductItem item={item} />
       ))}
     </table>
   );

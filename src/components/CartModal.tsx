@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { ProductType } from "../utils/types";
+import { useCartContext } from "../contexts/CartContext";
 
-type CartModalProps = {
-  products: ProductType[];
-  onRemoveProduct: (productId: number) => void;
-};
+export const CartModal = () => {
+  const { products, handleRemoveProduct } = useCartContext();
 
-export const CartModal = ({ products, onRemoveProduct }: CartModalProps) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const itemCount = products.length;
@@ -35,7 +32,7 @@ export const CartModal = ({ products, onRemoveProduct }: CartModalProps) => {
                   {item.name} - ${item.price}
                   <button
                     className="btn btn-circle text-red-500"
-                    onClick={() => onRemoveProduct(item.id)}
+                    onClick={() => handleRemoveProduct(item.id)}
                   >
                     X
                   </button>
